@@ -7,6 +7,10 @@
 * git branch YouName-P0?
 * git checkout YouName-P0?
 * Importer le comme 'Existing Projects into Workspace'
+* Apres modifications
+* git add -A
+* git commit -m "[P0?] - blabla"
+* git push git push --set-upstream origin YouName-P0?
 
 ## Liste des fichiers
     src
