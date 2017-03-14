@@ -4,8 +4,8 @@ import common._
 
 object TD7 {
   /**
-   * Nom  :
-   * Sujet:
+   * Nom  : Pierre VARLEZ
+   * Sujet: P04
    */
 
   /**
@@ -72,9 +72,9 @@ object TD7 {
   /**
    * P04
    *
-   * ImplÃ©mentez une mÃ©thode qui extraie une partie dâ€™une liste.
-   * Soit deux indices I et K, retournez une sous-liste comprenant les Ã©lÃ©ments entre (et incluant)
-   * le IÃ¨me et le KÃ¨me (exclu). Commencez Ã  comptez Ã  0.
+   * Implementez une methode qui extraie une partie d'une liste.
+   * Soit deux indices I et K, retournez une sous-liste comprenant les elements entre (et incluant)
+   * le Ieme et le Keme (exclu). Commencez a compter a 0.
    *
    * Exemple :
    *
@@ -83,9 +83,30 @@ object TD7 {
    *
    */
   
+   def P04(I:Int, K:Int, myList:List[_]):List[_] = {
+     if(I > K || I < 0 || I > myList.size || K > myList.size) Nil
+     myList match {
+       case Nil => Nil
+       case _ =>
+         if(I == 0 && K == myList.size)
+           myList
+         else if(I > 0)
+           P04(I-1,K-1,myList.tail)
+         else
+           P04(I,K,myList.init)
+     }
+   }
+  
   /**
    * Explications:
+   * La premiere ligne sert a verifier les cas d'erreur : indices dans le mauvais 
+   * ordre, premier indice en dehors de la liste, deuxieme indice en dehors de la
+   * liste.
    * 
+   * On regarde ensuite si la liste est vide, puis :
+   * le cas où on a bien les bons indices
+   * le cas où I est > 0, auquel cas on "décale" la liste
+   * après avoir décalé le I, on enlève les éléments en fin de liste.
    */
 
   
@@ -136,6 +157,16 @@ object TD7 {
    * Ecrivez une methode encode qui transforme
    * List(1, 2, 2, 2, 2, 2, 3, 2, 2) en List((1, 1), (2, 5), (3, 1), (2, 2))
    */
+   
+  /* def encode(myList: List[_]): List[_] = myList.foldLeft(List[(Int, _)]()){ (r, c) =>
+     r match {
+     case (value, count) :: tail =>
+        if (value == c) (c, count+1) :: tail
+        else            (c, 1) :: r
+      case Nil =>
+        (c, 1) :: r
+     }
+   }.reverse*/
   
   /**
    * B02
